@@ -1,6 +1,53 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
+#include <fstream>
+#include <string.h>
+#include <sstream>
+#include "Renderer.h"
+#include "VertexBuffer.h"
+#include "IndexBuffer.h"
+
+enum class ShaderType
+{
+    NONE = -1,VERTEX =0,FRAGMENT = 1
+
+};
+
+struct ShaderProgramSource
+{
+    std::string vertexShader;
+    std::string fragmentShader;
+};
+
+static ShaderProgramSource ParseShader(const std::string filepath)
+{
+    std::ifstream stream(filepath);
+
+    std::string line;
+    std::stringstream ss[2];
+    ShaderType type = ShaderType::NONE;
+    while(getline(stream,line))
+    {
+        if(line.find("#shader")!=std::string::npos)
+        {
+            if(line.find("vertex")!=std::string::npos)
+            {
+                type = ShaderType::VERTEX;
+            }
+            else if(line.find("fragment")!=std::string::npos)
+            {
+                type = ShaderType::FRAGMENT;
+            }
+        }
+        else
+        {
+            ss[(int)type] << line << '\n';
+        }
+    }
+
+    return { ss[0].str(),ss[1].str() };
+}
 
 //表示类型的参数类型是GLenum,也是typedef unsigned int GLenum;写无符号整形避免其他地方调用该函数时需要引入glew
 static unsigned int CompileShader(unsigned int type,const std::string& source)
@@ -57,7 +104,7 @@ int main(void)
         return -1;
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(640, 480, "OpenGl", NULL, NULL);
+    window = glfwCreateWindow(640, 640, "OpenGl", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
@@ -68,6 +115,7 @@ int main(void)
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
 
+    glfwSwapInterval(1);
 
     //在上下文初始化完成后初始化glew
     if (glewInit() != GLEW_OK)
@@ -75,55 +123,73 @@ int main(void)
 
     std::cout << glGetString(GL_VERSION) << std::endl;
 
-    float position[6] = {
+    float position[] = {
         -0.5f,-0.5f,
-        0.0f,0.5f,
-        0.5f,-0.5f
+        0.5f,-0.5f,
+        0.5f,0.5f,
+        -0.5f,0.5f,
     };
 
-    unsigned int Buffer;
-    glGenBuffers(1, &Buffer);
-    glBindBuffer(GL_ARRAY_BUFFER, Buffer);
-    glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(float), position, GL_STATIC_DRAW);
+    unsigned int indices[] = {
+        0,1,2,
+        2,3,0
+    };
+
+    unsigned int vao;
+    glGenVertexArrays(1, &vao);
+    glBindVertexArray(vao);
+
+    VertexBuffer vb(position,4*2*sizeof(float));
+
+    //unsigned int Buffer;
+    //glGenBuffers(1, &Buffer);
+    //glBindBuffer(GL_ARRAY_BUFFER, Buffer);
+    //glBufferData(GL_ARRAY_BUFFER, 4 * 2 * sizeof(float), position, GL_STATIC_DRAW);
 
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
-
-    std::string vertexShader =
-        "#version 330 core\n"//330是glsl的版本core指的是不用废弃掉的方法
-        "\n"
-        "layout(location = 0)in vec4 position;\n"
-        "\n"
-        "void main()\n"
-        "{\n"
-        " gl_Position = position;\n"
-        "}\n";
         
 
-	std::string fragShader =
-		"#version 330 core\n"//330是glsl的版本core指的是不用废弃掉的方法
-		"\n"
-		"layout(location = 0)out vec4 color;\n"
-		"\n"
-		"void main()\n"
-		"{\n"
-		" color = vec4(1.0,0.0,0.0,1.0);\n"
-		"}\n";
+    IndexBuffer ibo(indices, 6);
+	//unsigned int ibo;
+	//glGenBuffers(1, &ibo);
+	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
+	//glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(unsigned int), indices, GL_STATIC_DRAW);
 
-    unsigned int shader = CreateShader(vertexShader, fragShader);
+    ShaderProgramSource source = ParseShader("res/shaders/Basic.shader");
+    std::cout << "vertex shader" << std::endl;
+    std::cout << source.vertexShader << std::endl;
+    std::cout << "fragment shader" << std::endl;
+    std::cout << source.fragmentShader << std::endl;
+
+    unsigned int shader = CreateShader(source.vertexShader, source.fragmentShader);
     glUseProgram(shader);
+    
+    int location = glGetUniformLocation(shader, "u_Color");
+
+    float r = 0;
+    float interval = 0.05;
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
 
-        glDrawArrays(GL_TRIANGLES, 0, 3);
-        //glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, NULL);
+        //glDrawArrays(GL_TRIANGLES, 0, 6);
+
+        GLCALL(glUseProgram(shader));
+        GLCALL(glUniform4f(location, r, 0.3f, 0.8f, 1.0f));
+        GLCALL(glBindVertexArray(vao));
+        ibo.Bind();
+
+        GLCALL(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, NULL));
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
-
-
+        r += interval;
+        if (r > 1)
+            interval = -0.05f;
+        if (r < 0)
+            interval = 0.05f;
 
         /* Poll for and process events */
         glfwPollEvents();
