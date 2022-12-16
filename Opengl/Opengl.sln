@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.4.33122.133
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32126.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Fs1", "Fs1\Fs1.vcxproj", "{67395693-4AA7-4B80-909B-B9913FC35AB5}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DrawTriangle", "Fs1\Fs1.vcxproj", "{67395693-4AA7-4B80-909B-B9913FC35AB5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

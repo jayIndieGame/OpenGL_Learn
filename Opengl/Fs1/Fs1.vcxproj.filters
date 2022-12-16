@@ -27,6 +27,21 @@
     <ClCompile Include="src\IndexBuffer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\VertexArray.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VertexBufferLayout.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Shader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vendor\stb_image\stb_image.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Texture\Texture.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\Basic.Shader" />
@@ -41,5 +56,25 @@
     <ClInclude Include="src\IndexBuffer.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="src\VertexArray.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\VertexBufferLayout.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vendor\stb_image\stb_image.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Texture\Texture.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\Texture\awesomeface.png">
+      <Filter>资源文件</Filter>
+    </Image>
   </ItemGroup>
 </Project>
