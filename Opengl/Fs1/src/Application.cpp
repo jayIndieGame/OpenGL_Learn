@@ -11,7 +11,8 @@
 #include "VertexArray.h"
 #include "Shader.h"
 #include "Texture/Texture.h"
-
+#include "glm/glm.hpp"
+#include "glm/gtc/matrix_transform.hpp"
 
 int main(void)
 {
@@ -22,7 +23,7 @@ int main(void)
         return -1;
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(640, 640, "OpenGl", NULL, NULL);
+    window = glfwCreateWindow(640, 480, "OpenGl", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
@@ -57,7 +58,7 @@ int main(void)
     VertexArray vao;
 
     VertexBuffer vb(vertices,4*7*sizeof(float));
-
+    
     VertexBufferLayout layout;
     layout.Push<float>(2);
     layout.Push<float>(3);
@@ -66,6 +67,9 @@ int main(void)
 
     IndexBuffer ibo(indices, 6);
 
+    glm::mat4 proj = glm::ortho(-2.0f, 2.0f, -1.5f, 1.5f, -1.0f, 1.0f);
+
+
     Shader shader("res/shaders/Basic.shader");
     shader.Bind();
     //shader.SetUniform4f("u_Color", 0.8f, 0.3f, 0.8f, 1.0f);
@@ -73,7 +77,7 @@ int main(void)
     Texture texture("res/Texture/awesomeface.png");
 	texture.Bind(1);
 	shader.SetUniform1i("u_Texture", 1);//bind 几这里就传几。即选择第几个slot
-
+    shader.SetUniform4fMat("u_MVP", proj);
 
     Renderer renderer;
 
