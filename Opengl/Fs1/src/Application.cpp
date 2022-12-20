@@ -17,6 +17,12 @@
 #include "imGui/imgui_impl_opengl3.h"
 #include "imGui/imgui_impl_glfw.h"
 
+static void constructCube()
+{
+
+}
+
+
 int main(void)
 {
     GLFWwindow* window;
@@ -59,21 +65,49 @@ int main(void)
 
     	50.0f,50.0f,50.0f,      1.0f,1.0f,1.0f,     0.0f,1.0f,//右上前
         50.0f,50.0f,-50.0f,     1.0f,1.0f,1.0f,     1.0f,1.0f,//右上后
-    	50.0f,-50.0f,50.0f,     1.0f,1.0f,1.0f,     0.0f,0.0f,//左下前
-    	50.0f,-50.0f,-50.0f,    1.0f,1.0f,1.0f,     1.0f,0.0f,//左下后
+    	50.0f,-50.0f,50.0f,     1.0f,1.0f,1.0f,     0.0f,0.0f,//右下前
+    	50.0f,-50.0f,-50.0f,    1.0f,1.0f,1.0f,     1.0f,0.0f,//右下后
+
+        50.0f,50.0f,-50.0f,     1.0f,1.0f,1.0f,     0.0f,1.0f,//右上后
+        -50.0f,50.0f,-50.0f,    1.0f,1.0f,1.0f,     1.0f,1.0f,//左上后
+        50.0f,-50.0f,-50.0f,    1.0f,1.0f,1.0f,     0.0f,0.0f,//右下后
+        -50.0f,-50.0f,-50.0f,   1.0f,1.0f,1.0f,     1.0f,0.0f,//左下后
+
+        -50.0f,50.0f,-50.0f,    1.0f,1.0f,1.0f,     0.0f,1.0f,//左上后
+        -50.0f,50.0f,50.0f,     1.0f,1.0f,1.0f,     1.0f,1.0f,//左上前
+        -50.0f,-50.0f,-50.0f,   1.0f,1.0f,1.0f,     0.0f,0.0f,//左下后
+        -50.0f,-50.0f,50.0f,    1.0f,1.0f,1.0f,     1.0f,0.0f,//左下前
+
+        //-50.0f,50.0f,-50.0f,  1.0f,1.0f,1.0f,     0.0f,1.0f,//左上后 12
+        //50.0f,50.0f,-50.0f,   1.0f,1.0f,1.0f,     1.0f,1.0f,//右上后 5
+        -50.0f,50.0f,50.0f,     1.0f,1.0f,1.0f,     0.0f,0.0f,//左上前
+         50.0f,50.0f,50.0f,     1.0f,1.0f,1.0f,     1.0f,0.0f,//右上前 4
+
+         -50.0f,-50.0f,-50.0f,   1.0f,1.0f,1.0f,     0.0f,1.0f,//左下后
+         50.0f,-50.0f,-50.0f,    1.0f,1.0f,1.0f,     1.0f,1.0f,//右下后
+         //50.0f,-50.0f,50.0f,   1.0f,1.0f,1.0f,     0.0f,0.0f,//左下前 2
+         50.0f,-50.0f,50.0f,     1.0f,1.0f,1.0f,     0.0f,1.0f,//右下前
+
     };
 
     unsigned int indices[] = {
 		0,1,2,
         2,1,3,
-
         4,5,6,
         6,7,5,
+        8,9,10,
+        10,9,11,
+        12,13,14,
+        14,13,15,
+        16,12,5,
+        5,16,17,
+        18,19,2,
+        2,19,20
     };
 
     VertexArray vao;
 
-    VertexBuffer vb(vertices,8*8*sizeof(float));
+    VertexBuffer vb(vertices,8*21*sizeof(float));
     
     VertexBufferLayout layout;
     layout.Push<float>(3);
@@ -81,13 +115,12 @@ int main(void)
     layout.Push<float>(2);
     vao.AddBuffer(vb,layout);
 
-    IndexBuffer ibo(indices, 12);
+    IndexBuffer ibo(indices, 36);
 
 
 
     Shader shader("res/shaders/Basic.shader");
     shader.Bind();
-    //shader.SetUniform4f("u_Color", 0.8f, 0.3f, 0.8f, 1.0f);
 
     Texture texture("res/Texture/awesomeface.png");
 	texture.Bind(1);
@@ -110,14 +143,16 @@ int main(void)
 
     glm::vec3 cameraTranslation(0, 0, 0);
     ImVec4 face_color = ImVec4(1.0f, 1.0f, 1.0f, 1.00f);
-    glm::mat4 proj = glm::perspective(glm::radians(80.0f),4.0f/3.0f,0.1f,1000.0f);
+    glm::mat4 proj = glm::perspective(glm::radians(90.0f),4.0f/3.0f,0.1f,1000.0f);
     glm::mat4 view;
     glm::mat4 model;
+    glEnable(GL_DEPTH_TEST);
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
         /* Render here */
         renderer.Clear();
+
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
@@ -126,7 +161,7 @@ int main(void)
         shader.SetUniform4f("u_Color", face_color.x, face_color.y, face_color.z,1);
 
         view = glm::translate(glm::mat4(1.0f), cameraTranslation);
-        model = glm::scale(glm::translate(glm::mat4(1.0f), glm::vec3(-100.0f, 0.0f, -300.0f)), glm::vec3(1.0f, 1.0f, 1.0f));
+        model = glm::scale(glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -300.0f)), glm::vec3(1.0f, 1.0f, 1.0f));
 
         glm::mat4 mvp = proj * view * model;
 
@@ -141,13 +176,14 @@ int main(void)
 
         {
 
-            ImGui::SliderFloat3("Translation", &cameraTranslation.x, -1.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
+            ImGui::SliderFloat3("Translation", &cameraTranslation.x, -300.0f, 300.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
             ImGui::ColorEdit3("Face color", (float*)&face_color);
             ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
             //ImGui::End();
         }
 
         ImGui::Render();
+
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
 		glfwSwapBuffers(window);
