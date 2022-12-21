@@ -66,6 +66,9 @@
     <ClCompile Include="src\vendor\imGui\imgui_impl_glfw.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\BasicMesh\Cube.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\Basic.Shader" />
@@ -1374,6 +1377,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\vendor\imGui\imgui_impl_glfw.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BasicMesh\Cube.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
