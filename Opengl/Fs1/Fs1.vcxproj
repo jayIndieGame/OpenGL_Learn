@@ -24,7 +24,7 @@
     <ProjectGuid>{67395693-4aa7-4b80-909b-b9913fc35ab5}</ProjectGuid>
     <RootNamespace>Fs1</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>DrawTriangle</ProjectName>
+    <ProjectName>Opengl</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -146,9 +146,11 @@
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\BasicMesh\Cube.cpp" />
+    <ClCompile Include="src\Camera\Camera.cpp" />
     <ClCompile Include="src\IndexBuffer.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\Shader.cpp" />
+    <ClCompile Include="src\Tests\TestClearColor.cpp" />
     <ClCompile Include="src\Texture\Texture.cpp" />
     <ClCompile Include="src\vendor\glm\detail\glm.cpp" />
     <ClCompile Include="src\vendor\imGui\imgui.cpp" />
@@ -304,9 +306,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\BasicMesh\Cube.h" />
+    <ClInclude Include="src\Camera\Camera.h" />
     <ClInclude Include="src\IndexBuffer.h" />
     <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\Shader.h" />
+    <ClInclude Include="src\Tests\Test.h" />
+    <ClInclude Include="src\Tests\TestClearColor.h" />
     <ClInclude Include="src\Texture\Texture.h" />
     <ClInclude Include="src\vendor\glm\common.hpp" />
     <ClInclude Include="src\vendor\glm\detail\compute_common.hpp" />

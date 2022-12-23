@@ -3,7 +3,7 @@
 
 Cube::Cube()
 {
-	m_vb = new VertexBuffer(GetVertices(), 8 * 21 * sizeof(float));
+	m_vb = new VertexBuffer(GetVertices(), 8 * 24 * sizeof(float));
 	m_ib = new IndexBuffer(GetIndices(), 36);
 }
 
@@ -31,10 +31,10 @@ void Cube::SetRenderState(Shader& shader, Texture& texture, VertexBufferLayout& 
 
 	shader.Bind();
 	texture.Bind(TextureSlot);
-	shader.SetUniform1i("u_Texture", 1);
-	layout.Push<float>(3);
+	shader.SetUniform1i("u_Texture", TextureSlot);
 	layout.Push<float>(3);
 	layout.Push<float>(2);
+	layout.Push<float>(3);
 	vao.AddBuffer(*m_vb, layout);
 	glEnable(GL_DEPTH_TEST);
 }
