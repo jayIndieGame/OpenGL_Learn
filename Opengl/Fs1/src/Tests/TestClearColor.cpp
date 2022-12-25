@@ -13,21 +13,21 @@ namespace test
 	{
 	}
 
-	void TestClearColor::OnUpdate(float deltaTime)
+	void TestClearColor::OnUpdate(float deltaTime, GLFWwindow* window)
 	{
-		Test::OnUpdate(deltaTime);
+		//Test::OnUpdate(deltaTime);
 	}
 
 	void TestClearColor::OnRender()
 	{
-		Test::OnRender();
+		//Test::OnRender();
 		GLCALL(glClearColor(m_ClearColor[0], m_ClearColor[1], m_ClearColor[2], m_ClearColor[3]));
 		GLCALL(glClear(GL_COLOR_BUFFER_BIT));
 	}
 
 	void TestClearColor::OnImGUIRender()
 	{
-		Test::OnImGUIRender();
+		//Test::OnImGUIRender();
 		ImGui::ColorEdit4("Clear Color", m_ClearColor);
 	}
 

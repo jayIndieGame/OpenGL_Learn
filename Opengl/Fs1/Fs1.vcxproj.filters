@@ -75,9 +75,18 @@
     <ClCompile Include="src\Tests\TestClearColor.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\Tests\Test.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tests\TestTexture2D.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tests\TestBasicLighting.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\shaders\Basic.Shader" />
+    <None Include="res\shaders\BasicLight.Shader" />
     <None Include="src\vendor\glm\detail\func_common.inl">
       <Filter>头文件</Filter>
     </None>
@@ -486,6 +495,7 @@
     <None Include="src\vendor\glm\gtx\wrap.inl">
       <Filter>头文件</Filter>
     </None>
+    <None Include="res\shaders\TestTexture.Shader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Renderer.h">
@@ -1395,6 +1405,15 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\Tests\TestClearColor.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tests\TestTexture2D.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tests\TestBasicLighting.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Library\HelperLibrary.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

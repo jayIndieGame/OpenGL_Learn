@@ -49,9 +49,9 @@ void main()
 
 	// specular
 	float specularStrength = 0.5;
-	vec3 viewDir = normalize(viewPos - worldPos);
-	vec3 halfDir = normalize(lightNDir + viewDir);
-	float spec = pow(max(dot(norm, halfDir), 0.0), 32);
+vec3 viewDir = normalize(viewPos - worldPos);
+vec3 halfDir = normalize(lightNDir+viewDir);
+float spec = pow(max(dot(norm, halfDir), 0.0), 32);
 	vec3 specular = specularStrength * spec * lightColor;
 
 	vec3 result = (ambient + diffuse + specular) ;

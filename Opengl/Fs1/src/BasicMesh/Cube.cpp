@@ -49,6 +49,11 @@ IndexBuffer Cube::GetIndexBuffer()
 	return *m_ib;
 }
 
+IndexBuffer* Cube::GetIndexBufferPointer()
+{
+	return m_ib;
+}
+
 void Cube::SetLocation(glm::vec3 worldLocation)
 {
 	world_transform.location = worldLocation;

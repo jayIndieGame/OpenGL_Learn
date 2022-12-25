@@ -90,6 +90,7 @@ public:
 
     VertexBuffer GetVertexBuffer();
     IndexBuffer GetIndexBuffer();
+    IndexBuffer* GetIndexBufferPointer();
 
     void SetLocation(glm::vec3 worldLocation);
     void SetRotation(glm::vec3 worldRotation);
