@@ -18,10 +18,6 @@
 
 static void checkGLFW(GLFWwindow* window);
 static void initGUI(GLFWwindow* window);
-static void processInput(GLFWwindow* window,Camera& camera);
-
-
-
 
 float deltaTime = 0.0f;	// time between current frame and last frame
 float lastFrame = 0.0f;
@@ -36,12 +32,15 @@ int main(void)
     initGUI(window);
     Renderer renderer;
 
+#pragma region ²âÊÔ³¡¾°Ä¿Â¼
     test::Test* currentTest = nullptr;
     test::TestMenu* testMenu = new test::TestMenu(currentTest);
     currentTest = testMenu;
     testMenu->Register<test::TestClearColor>("Clear Color");
     testMenu->Register<test::TestTexture2D>("Test Texture2D");
     testMenu->Register<test::TestBasicLighting>("Basic Lighting");
+#pragma endregion
+
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
@@ -122,23 +121,4 @@ static void initGUI(GLFWwindow* window)
     //ImGui_ImplGlfw_InstallCallbacks(window);
 }
 
-static void processInput(GLFWwindow* window,Camera& camera)
-{
-    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-        glfwSetWindowShouldClose(window, true);
-
-    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-        camera.ProcessKeyboard(FORWARD, deltaTime);
-    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-        camera.ProcessKeyboard(BACKWARD, deltaTime);
-    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-        camera.ProcessKeyboard(LEFT, deltaTime);
-    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-        camera.ProcessKeyboard(RIGHT, deltaTime);
-    if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)
-        camera.ProcessKeyboard(Cam_Up, deltaTime);
-    if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS)
-        camera.ProcessKeyboard(Cam_DOWN, deltaTime);
-
-}
 
