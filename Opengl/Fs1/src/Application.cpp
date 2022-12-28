@@ -14,6 +14,7 @@
 #include "TestClearColor.h"
 #include "TestTexture2D.h"
 #include "TestBasicLighting.h"
+#include <config.h>
 
 
 static void checkGLFW(GLFWwindow* window);
