@@ -23,15 +23,17 @@ unsigned int* Cube::GetIndices()
 	return indices;
 }
 
-void Cube::SetRenderState(Shader& shader, Texture& texture, VertexBufferLayout& layout, VertexArray& vao,
+void Cube::SetRenderState(Shader& shader, Texture& DiffuseTexture,Texture& SpecularTexture, VertexBufferLayout& layout, VertexArray& vao,
 	int TextureSlot) const
 {
 	m_vb->Bind();
 	m_ib->Bind();
 
 	shader.Bind();
-	texture.Bind(TextureSlot);
+	DiffuseTexture.Bind(TextureSlot);
+	SpecularTexture.Bind(TextureSlot+1);
 	shader.SetUniform1i("u_Texture", TextureSlot);
+	shader.SetUniform1i("u_Texture", TextureSlot+1);
 	layout.Push<float>(3);
 	layout.Push<float>(2);
 	layout.Push<float>(3);

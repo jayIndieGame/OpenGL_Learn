@@ -86,7 +86,7 @@ public:
 
     unsigned int* GetIndices();
 
-    void SetRenderState(Shader& shader,Texture& texture, VertexBufferLayout& layout,VertexArray& vao,int TextureSlot) const;
+    void SetRenderState(Shader& shader,Texture& Diffusetexture,Texture& Speculartexture, VertexBufferLayout& layout,VertexArray& vao,int TextureSlot) const;
 
     VertexBuffer GetVertexBuffer();
     IndexBuffer GetIndexBuffer();
