@@ -58,7 +58,8 @@ namespace test
 
 	TestTexture2D::~TestTexture2D()
 	{
-
+		GLCALL(glDisable(GL_BLEND))
+		//GLCALL(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
 	}
 
 	void TestTexture2D::OnUpdate(float deltaTime, GLFWwindow* window)
