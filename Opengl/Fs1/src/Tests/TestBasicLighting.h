@@ -24,7 +24,7 @@ namespace test
 		std::unique_ptr<Cube> m_Cube;
 		std::unique_ptr<Camera> m_Camera;
 		std::unique_ptr<Shader> m_Shader;
-		std::unique_ptr<Texture> m_Texture;
+		std::unique_ptr<Texture> m_Texture_Diffuse,m_Texture_Specular;
 		glm::vec3 objectLocation, initLocation, objectRotation, lightPos;
 		ImVec4 m_Color = ImVec4(1.0f, 1.0f, 1.0f, 1.00f), lightColor;
 	};

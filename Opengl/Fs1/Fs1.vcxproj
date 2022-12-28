@@ -618,6 +618,8 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\Texture\awesomeface.png" />
+    <Image Include="res\Texture\container2.png" />
+    <Image Include="res\Texture\container2_specular.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

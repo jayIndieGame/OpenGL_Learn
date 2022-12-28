@@ -1421,5 +1421,11 @@
     <Image Include="res\Texture\awesomeface.png">
       <Filter>资源文件</Filter>
     </Image>
+    <Image Include="res\Texture\container2.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\Texture\container2_specular.png">
+      <Filter>资源文件</Filter>
+    </Image>
   </ItemGroup>
 </Project>
