@@ -84,6 +84,15 @@
     <ClCompile Include="src\Tests\TestBasicLighting.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\BasicMesh\Mesh.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BasicMesh\Model.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tests\TestModelLoading.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\BasicLight.Shader" />
@@ -496,6 +505,8 @@
       <Filter>头文件</Filter>
     </None>
     <None Include="res\shaders\TestTexture.Shader" />
+    <None Include="res\shaders\ModelLoading.Shader" />
+    <None Include="res\Model\backpack\backpack.mtl" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Renderer.h">
@@ -1416,6 +1427,15 @@
     <ClInclude Include="src\Library\HelperLibrary.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="src\BasicMesh\Mesh.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BasicMesh\Model.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tests\TestModelLoading.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\Texture\awesomeface.png">
@@ -1427,5 +1447,23 @@
     <Image Include="res\Texture\container2_specular.png">
       <Filter>资源文件</Filter>
     </Image>
+    <Image Include="res\Model\backpack\ao.jpg">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\Model\backpack\diffuse.jpg">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\Model\backpack\normal.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\Model\backpack\roughness.jpg">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\Model\backpack\specular.jpg">
+      <Filter>资源文件</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="res\Model\backpack\source_attribution.txt" />
   </ItemGroup>
 </Project>

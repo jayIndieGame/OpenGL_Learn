@@ -85,7 +85,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)Dependence\Assimp\32\lib2022;$(SolutionDir)Dependence\Assimp\32\lib2019;$(SolutionDir)Dependence\GLEW\lib\Win32;$(SolutionDir)Dependence\GLFW\32\lib-vc2019;$(SolutionDir)Dependence\GLFW\32\lib-vc2022;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glew32s.lib;glfw3.lib;Opengl32.lib;User32.lib;Gdi32.lib;Shell32.lib;</AdditionalDependencies>
+      <AdditionalDependencies>glew32s.lib;glfw3.lib;Opengl32.lib;User32.lib;Gdi32.lib;Shell32.lib;assimp-vc142-mtd.lib;assimp-vc143-mtd.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -106,7 +106,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)Dependence\Assimp\32\lib2022;$(SolutionDir)Dependence\Assimp\32\lib2019;$(SolutionDir)Dependence\GLEW\lib\Win32;$(SolutionDir)Dependence\GLFW\32\lib-vc2019;$(SolutionDir)Dependence\GLFW\32\lib-vc2022;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glew32s.lib;glfw3.lib;Opengl32.lib;User32.lib;Gdi32.lib;Shell32.lib;</AdditionalDependencies>
+      <AdditionalDependencies>glew32s.lib;glfw3.lib;Opengl32.lib;User32.lib;Gdi32.lib;Shell32.lib;assimp-vc142-mtd.lib;assimp-vc143-mtd.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -146,6 +146,8 @@
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\BasicMesh\Cube.cpp" />
+    <ClCompile Include="src\BasicMesh\Mesh.cpp" />
+    <ClCompile Include="src\BasicMesh\Model.cpp" />
     <ClCompile Include="src\Camera\Camera.cpp" />
     <ClCompile Include="src\IndexBuffer.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
@@ -153,6 +155,7 @@
     <ClCompile Include="src\Tests\Test.cpp" />
     <ClCompile Include="src\Tests\TestBasicLighting.cpp" />
     <ClCompile Include="src\Tests\TestClearColor.cpp" />
+    <ClCompile Include="src\Tests\TestModelLoading.cpp" />
     <ClCompile Include="src\Tests\TestTexture2D.cpp" />
     <ClCompile Include="src\Texture\Texture.cpp" />
     <ClCompile Include="src\vendor\glm\detail\glm.cpp" />
@@ -169,7 +172,9 @@
     <ClCompile Include="src\VertexBufferLayout.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="res\Model\backpack\backpack.mtl" />
     <None Include="res\shaders\BasicLight.Shader" />
+    <None Include="res\shaders\ModelLoading.Shader" />
     <None Include="res\shaders\TestTexture.Shader" />
     <None Include="src\vendor\glm\detail\func_common.inl" />
     <None Include="src\vendor\glm\detail\func_common_simd.inl" />
@@ -310,6 +315,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\BasicMesh\Cube.h" />
+    <ClInclude Include="src\BasicMesh\Mesh.h" />
+    <ClInclude Include="src\BasicMesh\Model.h" />
     <ClInclude Include="src\Camera\Camera.h" />
     <ClInclude Include="src\IndexBuffer.h" />
     <ClInclude Include="src\Library\HelperLibrary.h" />
@@ -318,6 +325,7 @@
     <ClInclude Include="src\Tests\Test.h" />
     <ClInclude Include="src\Tests\TestBasicLighting.h" />
     <ClInclude Include="src\Tests\TestClearColor.h" />
+    <ClInclude Include="src\Tests\TestModelLoading.h" />
     <ClInclude Include="src\Tests\TestTexture2D.h" />
     <ClInclude Include="src\Texture\Texture.h" />
     <ClInclude Include="src\vendor\glm\common.hpp" />
@@ -617,9 +625,17 @@
     <ClInclude Include="src\VertexBufferLayout.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="res\Model\backpack\ao.jpg" />
+    <Image Include="res\Model\backpack\diffuse.jpg" />
+    <Image Include="res\Model\backpack\normal.png" />
+    <Image Include="res\Model\backpack\roughness.jpg" />
+    <Image Include="res\Model\backpack\specular.jpg" />
     <Image Include="res\Texture\awesomeface.png" />
     <Image Include="res\Texture\container2.png" />
     <Image Include="res\Texture\container2_specular.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="res\Model\backpack\source_attribution.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

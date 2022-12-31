@@ -63,3 +63,10 @@ void test::TestBasicLighting::OnImGUIRender()
     ImGui::SliderFloat("Camera Speed", &m_Camera->MovementSpeed, 8, 50.0f);
     ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 }
+
+void test::TestBasicLighting::OnExit()
+{
+	//Test::OnExit();
+    m_Texture_Diffuse->TextureRelease();
+    m_Texture_Specular->TextureRelease();
+}

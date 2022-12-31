@@ -17,6 +17,7 @@ namespace test
 		void OnUpdate(float deltaTime, GLFWwindow* window) override;
 		void OnRender() override;
 		void OnImGUIRender() override;
+		void OnExit() override;
 
 	private:
 		std::unique_ptr<VertexArray> m_VAO;

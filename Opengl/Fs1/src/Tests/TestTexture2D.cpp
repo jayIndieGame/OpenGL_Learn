@@ -36,6 +36,7 @@ namespace test
 		GLCALL(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
 
 		m_Shader = std::make_unique<Shader>("res/shaders/TestTexture.shader");
+		//m_Texture = std::make_unique<Texture>("res/Model/backpack/diffuse.jpg", "u_Texture", true);
 		m_Texture = std::make_unique<Texture>("res/Texture/awesomeface.png");
 		m_VAO = std::make_unique<VertexArray>();
 
@@ -93,5 +94,10 @@ namespace test
 		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 	}
 
+	void TestTexture2D::OnExit()
+	{
+		//Test::OnExit();
+		m_Texture->TextureRelease();
+	}
 }
 

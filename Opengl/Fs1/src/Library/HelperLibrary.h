@@ -7,6 +7,7 @@ namespace Helper
 {
     static void processInput(GLFWwindow* window, Camera& camera, float deltaTime);
 
+
     static void processInput(GLFWwindow* window, Camera& camera, float deltaTime)
     {
         if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
@@ -26,4 +27,6 @@ namespace Helper
             camera.ProcessKeyboard(Cam_DOWN, deltaTime);
 
     }
+
+
 }

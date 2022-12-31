@@ -17,7 +17,7 @@ namespace test
 		virtual void OnUpdate(float deltaTime, GLFWwindow* window) {  }
 		virtual void OnRender() {}
 		virtual void OnImGUIRender() {}
-
+		virtual void OnExit(){}
 
 	};
 

@@ -14,8 +14,7 @@
 #include "TestClearColor.h"
 #include "TestTexture2D.h"
 #include "TestBasicLighting.h"
-#include <config.h>
-
+#include "TestModelLoading.h"
 
 static void checkGLFW(GLFWwindow* window);
 static void initGUI(GLFWwindow* window);
@@ -40,6 +39,7 @@ int main(void)
     testMenu->Register<test::TestClearColor>("Clear Color");
     testMenu->Register<test::TestTexture2D>("Test Texture2D");
     testMenu->Register<test::TestBasicLighting>("Basic Lighting");
+    testMenu->Register<test::TestModelLoading>("Test Model Loading");
 #pragma endregion
 
 
@@ -62,12 +62,14 @@ int main(void)
             ImGui::Begin("Test");
             if(currentTest!= testMenu&&ImGui::Button("<-"))
             {
+                currentTest->OnExit();
                 delete currentTest;
                 currentTest = testMenu;
                 GLCALL(glClearColor(0.0f, 0.0f, 0.0f, 1.0f));
             }
             currentTest->OnImGUIRender();
             ImGui::End();
+            
         }
 
 
