@@ -2,7 +2,7 @@
 #include "Camera.h"
 #include "Cube.h"
 #include "Test.h"
-
+#include "VertexBufferLayout.h"
 #include "Texture.h"
 #include "memory"
 #include "imGui/imgui.h"

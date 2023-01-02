@@ -101,8 +101,8 @@ static void checkGLFW(GLFWwindow* window)
 
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);//主版本为openGL3
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 4);//次版本为3
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwSwapInterval(1);
 

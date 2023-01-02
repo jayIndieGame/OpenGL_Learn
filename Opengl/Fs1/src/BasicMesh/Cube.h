@@ -1,27 +1,11 @@
 #pragma once
+#include "BasicMesh.h"
 
-#include "..\\VertexBuffer.h"
-#include "..\\VertexBufferLayout.h"
-#include "..\\IndexBuffer.h"
-#include "..\\VertexArray.h"
-#include "..\\Shader.h"
-#include "..\\Texture/Texture.h"
-#include "..\\vendor/glm/glm.hpp"
-#include "..\\vendor/glm/gtc/matrix_transform.hpp"
-
-struct Transform
-{
-    glm::vec3 location = glm::vec3(0,0,0);
-    glm::vec3 Rotation = glm::vec3(0, 0, 0);
-    glm::vec3 Scale =  glm::vec3(1, 1, 1);
-};
-
-
-class Cube
+class Cube:public BasicMesh
 {
 
 private:
-    int m_id;
+    //int m_id;
 	float vertices[24*8]
 	= {
         //position                //coordinates       //normal
@@ -73,29 +57,24 @@ private:
 
     VertexBuffer* m_vb;
     IndexBuffer* m_ib;
-    glm::mat4 modelMat = glm::mat4(1.0f);
+
 
 public:
 
-    Transform world_transform;
-
 	Cube();
-	~Cube();
+	~Cube() override;
 
-    float* GetVertices();
+    float* GetVertices() override;
 
-    unsigned int* GetIndices();
+    unsigned int* GetIndices() override;
 
-    void SetRenderState(Shader& shader,Texture& Diffusetexture,Texture& Speculartexture, VertexBufferLayout& layout,VertexArray& vao,int TextureSlot) const;
+    void SetRenderState(Shader& shader,Texture& diffuseTexture,Texture& specularTexture, VertexBufferLayout& layout,VertexArray& vao,int TextureSlot) const override;
+    void SetRenderState(Shader& shader,Texture& diffuseTexture,VertexBufferLayout& layout,VertexArray& vao,int TextureSlot) const override;
 
-    VertexBuffer GetVertexBuffer();
-    IndexBuffer GetIndexBuffer();
-    IndexBuffer* GetIndexBufferPointer();
+    VertexBuffer GetVertexBuffer() override;
+    IndexBuffer GetIndexBuffer() override;
+    IndexBuffer* GetIndexBufferPointer() override;
 
-    void SetLocation(glm::vec3 worldLocation);
-    void SetRotation(glm::vec3 worldRotation);
-    void SetScale(glm::vec3 worldSize);
-    glm::mat4 GetModelMatrix();
 
 private:
 

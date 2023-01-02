@@ -51,22 +51,23 @@ uniform vec3 viewPos;
 
 void main()
 {
-    // ambient
-    vec3 ambient = light.ambient * texture(material.diffuse, v_texcoord).rgb;
+    //// ambient
+    //vec3 ambient = light.ambient * texture(material.diffuse, v_texcoord).rgb;
 
-    // diffuse 
-    vec3 norm = normalize(Normal);
-    vec3 lightDir = normalize(light.position - worldPos);
-    float diff = max(dot(norm, lightDir), 0.0);
-    vec3 diffuse = light.diffuse * diff * texture(material.diffuse, v_texcoord).rgb;
+    //// diffuse 
+    //vec3 norm = normalize(Normal);
+    //vec3 lightDir = normalize(light.position - worldPos);
+    //float diff = max(dot(norm, lightDir), 0.0);
+    //vec3 diffuse = light.diffuse * diff * texture(material.diffuse, v_texcoord).rgb;
 
-    // specular
-    vec3 viewDir = normalize(viewPos - worldPos);
-    vec3 reflectDir = reflect(-lightDir, norm);
-    float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
-    vec3 specular = light.specular * spec * texture(material.specular, v_texcoord).rgb;
+    //// specular
+    //vec3 viewDir = normalize(viewPos - worldPos);
+    //vec3 reflectDir = reflect(-lightDir, norm);
+    //float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
+    //vec3 specular = light.specular * spec * texture(material.specular, v_texcoord).rgb;
 
-    vec3 result = ambient + diffuse + specular;
-    FragColor = vec4(result, 1.0);
+    //vec3 result = ambient + diffuse + specular;
+    //FragColor = vec4(result, 1.0);
+    FragColor = vec4(vec3(gl_FragCoord.z), 1.0);
 
 };

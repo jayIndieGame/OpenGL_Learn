@@ -19,6 +19,7 @@ lightPos(100.0f, 100.0f, -300.0f), lightColor(1.0f, 1.0f, 1.0f, 1.00f)
 	m_Cube->SetLocation(initLocation);
     m_Shader->SetUniform1i("material.diffuse", 0);
     m_Shader->SetUniform1i("material.specular", 1);
+    glEnable(GL_DEPTH_TEST);
 }
 
 test::TestBasicLighting::~TestBasicLighting()
