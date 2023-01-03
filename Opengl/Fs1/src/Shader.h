@@ -30,6 +30,8 @@ public:
 	void SetUniform1f(const std::string& name, float value);
 	void SetUniform4fMat(const std::string& name,const glm::mat4& matrix);
 
+	void SetUniform1b(const std::string& name, bool condition);
+
 
 private:
 	unsigned int m_RendererID;

@@ -44,6 +44,7 @@ void test::TestBasicLighting::OnRender()
     m_Cube->SetRotation(objectRotation);
     //view = glm::translate(glm::mat4(1.0f), cameraTranslation);
     //glm::mat4 mvp = proj * view * model;
+
     m_Shader->SetUniform4fMat("u_model", m_Cube->GetModelMatrix());
     m_Shader->SetUniform4fMat("u_view", m_Camera->GetViewMatrix());
     m_Shader->SetUniform4fMat("u_project", m_Camera->GetProjMatrix());

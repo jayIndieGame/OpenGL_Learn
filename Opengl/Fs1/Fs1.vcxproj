@@ -177,7 +177,6 @@
   <ItemGroup>
     <None Include="res\Model\backpack\backpack.mtl" />
     <None Include="res\shaders\BasicLight.Shader" />
-    <None Include="res\shaders\DepthStencilEdge.Shader" />
     <None Include="res\shaders\DepthStencilObject.Shader" />
     <None Include="res\shaders\ModelLoading.Shader" />
     <None Include="res\shaders\TestTexture.Shader" />

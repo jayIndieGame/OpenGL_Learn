@@ -15,6 +15,7 @@
 #include "TestTexture2D.h"
 #include "TestBasicLighting.h"
 #include "TestModelLoading.h"
+#include "TestDepthAndStencil.h"
 
 static void checkGLFW(GLFWwindow* window);
 static void initGUI(GLFWwindow* window);
@@ -40,6 +41,7 @@ int main(void)
     testMenu->Register<test::TestTexture2D>("Test Texture2D");
     testMenu->Register<test::TestBasicLighting>("Basic Lighting");
     testMenu->Register<test::TestModelLoading>("Test Model Loading");
+    testMenu->Register<test::TestDepthAndStencil>("Test Depth Stencil");
 #pragma endregion
 
 

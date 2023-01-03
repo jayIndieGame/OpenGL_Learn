@@ -20,6 +20,8 @@ namespace test
 
 	private:
 		std::unique_ptr<VertexArray> m_CubeVAO,m_PlaneVAO;
+		bool m_depth, m_stencil;
+		float m_scale = 1.04f;
 		std::unique_ptr<Shader> m_CubeShader,m_PlaneShader,m_EdgeShader;
 		std::unique_ptr<Camera> m_Camera;
 		std::unique_ptr<Cube> m_Cube;
