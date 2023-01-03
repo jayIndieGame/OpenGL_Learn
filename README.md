@@ -4,7 +4,7 @@
 
 项目已配置32位，64位。使用glfw,glew,imGUi,Assimp。不同于[LearnOpengl代码](https://github.com/JoeyDeVries/LearnOpenGL)每个知识点是独立的项目，该项目将所有的代码封装整合起来。并通过ImGui分Level的方式将每个知识点作为单独的Level存放。
 
-项目中的封装方式以简单易用为目标，不会像引擎一样封装至RHI层，但也仍会简化大量的OpenglAPI。由于Opengl不方便Debug，所以参考用宏封装的方式方便定位报错行，详细请见项目代码。
+项目中的封装方式以简单易用为目标，不会像引擎一样封装至RHI层，并且封装存在一些不太合理且不太能构成一个良好的结构（比如mesh导入和手写的vertice mesh同时存在就比较迷惑）。主要是方便使用，增加可读性，以学习opengl为主。
 
 文档笔记地址：
 
@@ -14,6 +14,6 @@
 
 第二部分（导入模型）：https://note.youdao.com/s/HXvGpMHM
 
-第三部分（Opengl知识补充）：
+第三部分（Opengl知识补充）：https://note.youdao.com/s/FeoaAZ2h
 
 第三部分（光照）：https://note.youdao.com/s/cUNtZEV
