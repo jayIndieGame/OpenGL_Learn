@@ -16,6 +16,7 @@
 #include "TestBasicLighting.h"
 #include "TestModelLoading.h"
 #include "TestDepthAndStencil.h"
+#include "TestAlphaAndCilp.h"
 
 static void checkGLFW(GLFWwindow* window);
 static void initGUI(GLFWwindow* window);
@@ -42,6 +43,8 @@ int main(void)
     testMenu->Register<test::TestBasicLighting>("Basic Lighting");
     testMenu->Register<test::TestModelLoading>("Test Model Loading");
     testMenu->Register<test::TestDepthAndStencil>("Test Depth Stencil");
+    testMenu->Register<test::TestAlphaAndClip>("Test Alpha And Clip");
+
 #pragma endregion
 
 

@@ -102,6 +102,9 @@
     <ClCompile Include="src\Tests\TestDepthAndStencil.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\Tests\TestAlphaAndClip.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\BasicLight.Shader" />
@@ -517,6 +520,7 @@
     <None Include="res\shaders\ModelLoading.Shader" />
     <None Include="res\Model\backpack\backpack.mtl" />
     <None Include="res\shaders\DepthStencilObject.Shader" />
+    <None Include="res\shaders\AlphaAndClip.Shader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Renderer.h">
@@ -1455,6 +1459,9 @@
     <ClInclude Include="src\Tests\TestDepthAndStencil.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="src\Tests\TestAlphaAndCilp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\Texture\awesomeface.png">
@@ -1485,6 +1492,12 @@
       <Filter>资源文件</Filter>
     </Image>
     <Image Include="res\Texture\metal.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\Texture\window.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\Texture\grass.png">
       <Filter>资源文件</Filter>
     </Image>
   </ItemGroup>
