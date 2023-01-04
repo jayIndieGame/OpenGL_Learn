@@ -81,7 +81,7 @@ void test::TestAlphaAndClip::OnUpdate(float deltaTime, GLFWwindow* window)
 	{
 		m_blend_button = "enable blend";
 	}
-
+	sorted.clear();//必须清除，不清楚当摄像机移动时这个orderedmap会无限长
 	if(m_order)
 	{
 		m_order_button = "disable order";
@@ -103,6 +103,7 @@ void test::TestAlphaAndClip::OnUpdate(float deltaTime, GLFWwindow* window)
 	{
 		m_clip_button = "enable clip";
 	}
+
 }
 
 void test::TestAlphaAndClip::OnRender()
