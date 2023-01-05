@@ -3,13 +3,10 @@
 #include <iostream>
 #include <fstream>
 #include "Renderer.h"
-#include "Shader.h"
 #include "glm/glm.hpp"
-#include "glm/gtc/matrix_transform.hpp"
 #include "imGui/imgui.h"
 #include "imGui/imgui_impl_opengl3.h"
 #include "imGui/imgui_impl_glfw.h"
-#include "Camera/Camera.h"
 #include "Tests/Test.h"
 #include "TestClearColor.h"
 #include "TestTexture2D.h"
@@ -17,6 +14,7 @@
 #include "TestModelLoading.h"
 #include "TestDepthAndStencil.h"
 #include "TestAlphaAndCilp.h"
+#include "TestBufferAndPost.h"
 
 static void checkGLFW(GLFWwindow* window);
 static void initGUI(GLFWwindow* window);
@@ -44,6 +42,7 @@ int main(void)
     testMenu->Register<test::TestModelLoading>("Test Model Loading");
     testMenu->Register<test::TestDepthAndStencil>("Test Depth Stencil");
     testMenu->Register<test::TestAlphaAndClip>("Test Alpha And Clip");
+    testMenu->Register<test::TestBufferAndPost>("Test Buffer And PostEffect");
 
 #pragma endregion
 

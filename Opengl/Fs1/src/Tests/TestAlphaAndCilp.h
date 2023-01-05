@@ -31,7 +31,7 @@ namespace test
 		std::vector<glm::vec3> m_windows_location;
 		std::map<float, glm::vec3> sorted;
 
-		bool m_enableBlend,m_order,m_clip;
-		std::string m_blend_button,m_order_button,m_clip_button;
+		bool m_enableBlend,m_order,m_clip,m_cull;
+		std::string m_blend_button,m_order_button,m_clip_button, m_cull_button;
 	};
 }

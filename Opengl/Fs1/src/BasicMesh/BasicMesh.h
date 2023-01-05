@@ -6,6 +6,7 @@
 
 #include "Shader.h"
 #include "Texture.h"
+#include "RuntimeTexture.h"
 
 struct Transform
 {
@@ -34,13 +35,14 @@ public:
 
 	virtual void SetRenderState(Shader& shader, Texture& diffuseTexture, Texture& specularTexture, VertexBufferLayout& layout, VertexArray& vao, int TextureSlot) const = 0;
 	virtual void SetRenderState(Shader& shader, Texture& diffuseTexture, VertexBufferLayout& layout, VertexArray& vao, int TextureSlot) const = 0;
+	virtual void SetRenderState(Shader& shader, RuntimeTexture& rt, VertexBufferLayout& layout, VertexArray& vao, GLenum attachment) const = 0;
 
 	virtual VertexBuffer GetVertexBuffer() = 0;
 	virtual IndexBuffer GetIndexBuffer() = 0;
 	virtual IndexBuffer* GetIndexBufferPointer()=0;
 
-	void SetLocation(glm::vec3 worldLocation);
-	void SetRotation(glm::vec3 worldRotation);
-	void SetScale(glm::vec3 worldSize);
+	virtual void SetLocation(glm::vec3 worldLocation);
+	virtual void SetRotation(glm::vec3 worldRotation);
+	virtual void SetScale(glm::vec3 worldSize);
 	glm::mat4 GetModelMatrix();
 };

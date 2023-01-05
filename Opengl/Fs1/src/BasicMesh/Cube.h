@@ -42,16 +42,16 @@ private:
     };
     unsigned int indices[36]
         =
-    { 0, 1, 2,
-    2, 1, 3,
-    4, 5, 6,
+    { 2, 1, 0,
+    3, 1, 2,
+    6, 5, 4,
     6, 7, 5,
-    8, 9, 10,
-    10, 9, 11,
-    12, 13, 14,
-    14, 13, 15,
-    16, 17, 18,
-    18, 17, 19,
+    10, 9, 8,
+    11, 9, 10,
+    14, 13, 12,
+    15, 13, 14,
+    18, 17, 16,
+    19, 17, 18,
     20, 21, 22,
     22, 21, 23 };
 
@@ -70,10 +70,12 @@ public:
 
     void SetRenderState(Shader& shader,Texture& diffuseTexture,Texture& specularTexture, VertexBufferLayout& layout,VertexArray& vao,int TextureSlot) const override;
     void SetRenderState(Shader& shader,Texture& diffuseTexture,VertexBufferLayout& layout,VertexArray& vao,int TextureSlot) const override;
+    void SetRenderState(Shader& shader, RuntimeTexture& rt, VertexBufferLayout& layout, VertexArray& vao,GLenum attachment) const override;
 
     VertexBuffer GetVertexBuffer() override;
     IndexBuffer GetIndexBuffer() override;
     IndexBuffer* GetIndexBufferPointer() override;
+
 
 
 private:

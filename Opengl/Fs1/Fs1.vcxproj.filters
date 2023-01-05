@@ -105,6 +105,21 @@
     <ClCompile Include="src\Tests\TestAlphaAndClip.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\Texture\RuntimeTexture.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Texture\RuntimeRenderBuffer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tests\TestBufferAndPost.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FrameBuffer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BasicMesh\Quad2D.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\BasicLight.Shader" />
@@ -521,6 +536,8 @@
     <None Include="res\Model\backpack\backpack.mtl" />
     <None Include="res\shaders\DepthStencilObject.Shader" />
     <None Include="res\shaders\AlphaAndClip.Shader" />
+    <None Include="res\shaders\BufferAndPost.Shader" />
+    <None Include="res\shaders\BufferQuad.Shader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Renderer.h">
@@ -1460,6 +1477,21 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\Tests\TestAlphaAndCilp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Texture\RuntimeTexture.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Texture\RuntimeRenderBuffer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tests\TestBufferAndPost.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FrameBuffer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BasicMesh\Quad2D.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

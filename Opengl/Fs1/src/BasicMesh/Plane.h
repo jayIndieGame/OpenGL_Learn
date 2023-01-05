@@ -17,8 +17,8 @@ private:
     unsigned int indices[6]
         =
     {
-        0,1,2,
-        2,3,0
+        2,1,0,
+        0,3,2
     };
 
     VertexBuffer* m_vb;
@@ -35,7 +35,10 @@ public:
 		VertexArray& vao, int TextureSlot) const override;
     void SetRenderState(Shader& shader, Texture& diffuseTexture, VertexBufferLayout& layout,
         VertexArray& vao, int TextureSlot) const override;
+    void SetRenderState(Shader& shader, RuntimeTexture& rt, VertexBufferLayout& layout, VertexArray& vao,
+        GLenum attachment) const override;
 	VertexBuffer GetVertexBuffer() override;
 	IndexBuffer GetIndexBuffer() override;
 	IndexBuffer* GetIndexBufferPointer() override;
+
 };

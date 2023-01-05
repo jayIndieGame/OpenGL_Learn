@@ -111,7 +111,17 @@ void test::TestAlphaAndClip::OnRender()
 	GLCALL(glClearColor(0.02, 0.02, 0.02, 1.0f));
 	Renderer render;
 	render.Clear();
-
+	if (m_cull)
+	{
+		m_cull_button = "disable cull";
+		GLCALL(glEnable(GL_CULL_FACE));
+		//GLCALL(glCullFace(GL_FRONT));
+	}
+	else
+	{
+		m_cull_button = "enable cull";
+		GLCALL(glDisable(GL_CULL_FACE));
+	}
 	//render cube 让cube写入stencil,always就行不需要比较
 	render.Draw(*m_CubeVAO, *m_Cube->GetIndexBufferPointer(), *m_CubeShader);
 	m_CubeShader->SetUniform4fMat("model", m_Cube->GetModelMatrix());
@@ -126,7 +136,7 @@ void test::TestAlphaAndClip::OnRender()
 	m_PlaneShader->SetUniform4fMat("view", m_Camera->GetViewMatrix());
 	m_PlaneShader->SetUniform4fMat("projection", m_Camera->GetProjMatrix());
 
-
+	GLCALL(glDisable(GL_CULL_FACE));
 	render.Draw(*m_PlaneVAO, *m_Grass->GetIndexBufferPointer(), *m_GrassShader);
 	m_GrassShader->SetUniform4fMat("model", m_Grass->GetModelMatrix());
 	m_GrassShader->SetUniform4fMat("view", m_Camera->GetViewMatrix());
@@ -191,6 +201,10 @@ void test::TestAlphaAndClip::OnImGUIRender()
 	if(ImGui::Button(m_clip_button.c_str()))
 	{
 		m_clip = !m_clip;
+	}
+	if(ImGui::Button(m_cull_button.c_str()))
+	{
+		m_cull = !m_cull;
 	}
 }
 
