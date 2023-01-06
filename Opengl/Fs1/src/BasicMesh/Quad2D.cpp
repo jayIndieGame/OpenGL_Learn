@@ -54,14 +54,14 @@ void Quad2D::SetRenderState(Shader& shader, Texture& diffuseTexture, VertexBuffe
 }
 
 void Quad2D::SetRenderState(Shader& shader, RuntimeTexture& rt, VertexBufferLayout& layout, VertexArray& vao,
-	GLenum attachment) const
+	GLenum attachment, unsigned int slot) const
 {
 	m_vb->Bind();
 	m_ib->Bind();
 
 	shader.Bind();
-	rt.BindFramebuffer(attachment);
-	//shader.SetUniform1i("u_Texture", TextureSlot);
+	rt.BindFramebuffer(attachment,slot);
+	shader.SetUniform1i("u_Texture", 2);
 	layout.Push<float>(2);
 	layout.Push<float>(2);
 	vao.AddBuffer(*m_vb, layout);

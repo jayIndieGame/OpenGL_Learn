@@ -35,7 +35,7 @@ public:
 
 	virtual void SetRenderState(Shader& shader, Texture& diffuseTexture, Texture& specularTexture, VertexBufferLayout& layout, VertexArray& vao, int TextureSlot) const = 0;
 	virtual void SetRenderState(Shader& shader, Texture& diffuseTexture, VertexBufferLayout& layout, VertexArray& vao, int TextureSlot) const = 0;
-	virtual void SetRenderState(Shader& shader, RuntimeTexture& rt, VertexBufferLayout& layout, VertexArray& vao, GLenum attachment) const = 0;
+	virtual void SetRenderState(Shader& shader, RuntimeTexture& rt, VertexBufferLayout& layout, VertexArray& vao, GLenum attachment, unsigned int TextureSlot) const = 0;
 
 	virtual VertexBuffer GetVertexBuffer() = 0;
 	virtual IndexBuffer GetIndexBuffer() = 0;

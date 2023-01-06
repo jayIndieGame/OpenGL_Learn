@@ -36,7 +36,7 @@ public:
     void SetRenderState(Shader& shader, Texture& diffuseTexture, VertexBufferLayout& layout,
         VertexArray& vao, int TextureSlot) const override;
     void SetRenderState(Shader& shader, RuntimeTexture& rt, VertexBufferLayout& layout, VertexArray& vao,
-        GLenum attachment) const override;
+        GLenum attachment, unsigned int slot) const override;
 
 	VertexBuffer GetVertexBuffer() override;
 	IndexBuffer GetIndexBuffer() override;

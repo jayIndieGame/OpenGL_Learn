@@ -13,7 +13,7 @@ private:
 	GLenum m_internalformat, m_format;
 
 public:
-	void BindFramebuffer(GLenum attachment)const;
+	void BindFramebuffer(GLenum attachment, unsigned int slot /*= 0*/)const;
 	void UnBind() const;
 	void TextureRelease()const;
 

@@ -10,6 +10,16 @@
 #include "RuntimeRenderBuffer.h"
 #include "RuntimeTexture.h"
 
+enum PostRenderMode
+{
+	null,
+	grayscale,
+	antiphase,
+	convolution,
+	blur,
+	sobel
+};
+
 namespace test
 {
 	class TestBufferAndPost :public test::Test
@@ -36,5 +46,9 @@ namespace test
 		std::unique_ptr<Texture> m_cubeTexture, m_floorTexture;
 		glm::vec3 cubeLocation, floorLocation;
 
+		std::string label_frameBuffer, label_grayscale, label_antiphase, label_convolution, label_blur,label_sobel;
+		bool enable_frameBuffer, enable_grayscale, enable_antiphase,enable_convolution, enable_blur, enable_sobel;
+		PostRenderMode m_postMode;
+		void ChangeRenderMode(PostRenderMode mode);
 	};
 }

@@ -21,9 +21,9 @@ RuntimeTexture::~RuntimeTexture()
 {
 }
 
-void RuntimeTexture::BindFramebuffer(GLenum attachment) const
+void RuntimeTexture::BindFramebuffer(GLenum attachment, unsigned int slot /*= 0*/) const
 {
-	//GLCALL(glActiveTexture(GL_TEXTURE0));
+	GLCALL(glActiveTexture(GL_TEXTURE0 + slot));
 	GLCALL(glFramebufferTexture2D(GL_FRAMEBUFFER, attachment, GL_TEXTURE_2D, m_RendererID, 0));//0是minimaplevel
 	GLCALL(glBindTexture(GL_TEXTURE_2D, m_RendererID));
 
