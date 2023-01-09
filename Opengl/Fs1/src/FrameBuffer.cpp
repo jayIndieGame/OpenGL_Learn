@@ -20,5 +20,5 @@ void FrameBuffer::Bind() const
 
 void FrameBuffer::UnBind() const
 {
-	GLCALL(glBindFramebuffer(GL_ARRAY_BUFFER, 0));
+	GLCALL(glBindFramebuffer(GL_FRAMEBUFFER, 0));
 }
