@@ -109,6 +109,11 @@ void Camera::ImGuiMouse(GLFWwindow* window)
 
 }
 
+void Camera::SetZOOM(float zoom)
+{
+    Zoom = zoom;
+}
+
 void Camera::updateCameraVectors()
 {
 	// calculate the new Front vector

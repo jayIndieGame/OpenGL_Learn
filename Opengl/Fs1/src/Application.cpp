@@ -15,6 +15,7 @@
 #include "TestDepthAndStencil.h"
 #include "TestAlphaAndCilp.h"
 #include "TestBufferAndPost.h"
+#include "TestSkyBoxAndReflect.h"
 
 static void checkGLFW(GLFWwindow* window);
 static void initGUI(GLFWwindow* window);
@@ -43,6 +44,7 @@ int main(void)
     testMenu->Register<test::TestDepthAndStencil>("Test Depth Stencil");
     testMenu->Register<test::TestAlphaAndClip>("Test Alpha And Clip");
     testMenu->Register<test::TestBufferAndPost>("Test Buffer And PostEffect");
+    testMenu->Register<test::TestSkyBoxAndReflect>("Test Skybox And Reflect");
 
 #pragma endregion
 

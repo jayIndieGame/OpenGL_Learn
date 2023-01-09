@@ -1,13 +1,14 @@
 #pragma once
 #include "BasicMesh.h"
+#include "CubeTexture.h"
 
-class Cube:public BasicMesh
+class Cube :public BasicMesh
 {
 
 private:
     //int m_id;
-	float vertices[24*8]
-	= {
+    float vertices[24 * 8]
+        = {
         //position                //coordinates       //normal
         -50.0f,50.0f,50.0f,       0.0f,1.0f,          0.0f,0.0f,-1.0f,//左上前
         50.0f,50.0f,50.0f,        1.0f,1.0f,          0.0f,0.0f,-1.0f,//右上前
@@ -40,6 +41,7 @@ private:
          50.0f,-50.0f,50.0f,       1.0f,0.0f,         0.0f,-1.0f,0.0f,//右下前
 
     };
+
     unsigned int indices[36]
         =
     { 2, 1, 0,
@@ -71,6 +73,8 @@ public:
     void SetRenderState(Shader& shader,Texture& diffuseTexture,Texture& specularTexture, VertexBufferLayout& layout,VertexArray& vao,int TextureSlot) const override;
     void SetRenderState(Shader& shader,Texture& diffuseTexture,VertexBufferLayout& layout,VertexArray& vao,int TextureSlot) const override;
     void SetRenderState(Shader& shader, RuntimeTexture& rt, VertexBufferLayout& layout, VertexArray& vao,GLenum attachment,unsigned int TextureSlot) const override;
+
+    void SetCubeBoxRenderState(Shader& shader, CubeTexture& cubeTexture, VertexBufferLayout& layout, VertexArray& vao, int TextureSlot) const;
 
     VertexBuffer GetVertexBuffer() override;
     IndexBuffer GetIndexBuffer() override;

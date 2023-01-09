@@ -70,6 +70,22 @@ void Cube::SetRenderState(Shader& shader, RuntimeTexture& rt, VertexBufferLayout
 	vao.AddBuffer(*m_vb, layout);
 }
 
+void Cube::SetCubeBoxRenderState(Shader& shader, CubeTexture& cubeTexture, VertexBufferLayout& layout, VertexArray& vao,
+	int TextureSlot) const
+{
+	m_vb->Bind();
+	m_ib->Bind();
+
+	shader.Bind();
+	cubeTexture.Bind(TextureSlot);
+	shader.SetUniform1i("u_Texture", TextureSlot);
+
+	layout.Push<float>(3);
+	layout.Push<float>(2);
+	layout.Push<float>(3);
+	vao.AddBuffer(*m_vb, layout);
+}
+
 VertexBuffer Cube::GetVertexBuffer()
 {
 	return *m_vb;

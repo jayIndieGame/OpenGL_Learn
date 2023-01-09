@@ -49,6 +49,7 @@ public:
 	glm::mat4 GetProjMatrix();
 	void ProcessKeyboard(Camera_Movement direction, float deltaTime);
 	void ImGuiMouse(GLFWwindow* window);
+	void SetZOOM(float zoom);
 
 private:
 	void updateCameraVectors();

@@ -120,6 +120,12 @@
     <ClCompile Include="src\BasicMesh\Quad2D.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\Texture\CubeTexture.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tests\TestSkyboxAndReflect.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\BasicLight.Shader" />
@@ -538,6 +544,7 @@
     <None Include="res\shaders\AlphaAndClip.Shader" />
     <None Include="res\shaders\BufferAndPost.Shader" />
     <None Include="res\shaders\BufferQuad.Shader" />
+    <None Include="res\shaders\SkyBoxAndReflect.Shader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Renderer.h">
@@ -1494,6 +1501,12 @@
     <ClInclude Include="src\BasicMesh\Quad2D.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="src\Texture\CubeTexture.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tests\TestSkyBoxAndReflect.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\Texture\awesomeface.png">
@@ -1530,6 +1543,24 @@
       <Filter>资源文件</Filter>
     </Image>
     <Image Include="res\Texture\grass.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\Texture\skybox\back.jpg">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\Texture\skybox\bottom.jpg">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\Texture\skybox\front.jpg">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\Texture\skybox\left.jpg">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\Texture\skybox\right.jpg">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\Texture\skybox\top.jpg">
       <Filter>资源文件</Filter>
     </Image>
   </ItemGroup>
