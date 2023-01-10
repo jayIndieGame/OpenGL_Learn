@@ -25,6 +25,7 @@ float lastFrame = 0.0f;
 
 int main(void)
 {
+
     GLFWwindow* window;
     if (!glfwInit())
         std::cout << "GLEW INIT ERROR" << std::endl;

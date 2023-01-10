@@ -169,6 +169,7 @@
     <ClCompile Include="src\Texture\RuntimeRenderBuffer.cpp" />
     <ClCompile Include="src\Texture\RuntimeTexture.cpp" />
     <ClCompile Include="src\Texture\Texture.cpp" />
+    <ClCompile Include="src\UniformBloack.cpp" />
     <ClCompile Include="src\vendor\glm\detail\glm.cpp" />
     <ClCompile Include="src\vendor\imGui\imgui.cpp" />
     <ClCompile Include="src\vendor\imGui\imgui_demo.cpp" />
@@ -355,6 +356,7 @@
     <ClInclude Include="src\Texture\RuntimeRenderBuffer.h" />
     <ClInclude Include="src\Texture\RuntimeTexture.h" />
     <ClInclude Include="src\Texture\Texture.h" />
+    <ClInclude Include="src\UniformBlock.h" />
     <ClInclude Include="src\vendor\glm\common.hpp" />
     <ClInclude Include="src\vendor\glm\detail\compute_common.hpp" />
     <ClInclude Include="src\vendor\glm\detail\compute_vector_relational.hpp" />

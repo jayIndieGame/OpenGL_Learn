@@ -76,6 +76,16 @@ void Shader::SetUniform1b(const std::string& name, bool condition)
 	GLCALL(glUniform1i(GetUniformLocation(name), condition));
 }
 
+void Shader::SetUniformBlock(const std::string& name, unsigned bindpoint)
+{
+	unsigned int uniformBlockIndex = glGetUniformBlockIndex(m_RendererID, "Matrices");
+	if(uniformBlockIndex == -1)
+	{
+		std::cout << "Warning:uniform '" << name << "'doesn't exist." << std::endl;
+	}
+	GLCALL(glUniformBlockBinding(m_RendererID, uniformBlockIndex, bindpoint));
+}
+
 GLint Shader::GetUniformLocation(const std::string& name) const
 {
 	if(m_UniformLocationCache.find(name) != m_UniformLocationCache.end())

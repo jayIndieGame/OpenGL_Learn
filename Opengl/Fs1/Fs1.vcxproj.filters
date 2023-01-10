@@ -126,6 +126,9 @@
     <ClCompile Include="src\Tests\TestSkyboxAndReflect.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\UniformBloack.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\BasicLight.Shader" />
@@ -1505,6 +1508,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\Tests\TestSkyBoxAndReflect.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UniformBlock.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

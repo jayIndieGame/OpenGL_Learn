@@ -32,6 +32,8 @@ public:
 
 	void SetUniform1b(const std::string& name, bool condition);
 
+	void SetUniformBlock(const std::string& name, unsigned int bindpoint);
+
 
 private:
 	unsigned int m_RendererID;
