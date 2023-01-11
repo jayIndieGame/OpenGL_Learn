@@ -162,6 +162,7 @@ vector<Texture> Model::LoadMaterialTextures(aiMaterial* mat, aiTextureType type,
 
 void Model::Draw(Shader& shader)
 {
+    shader.Bind();
     for (unsigned int i = 0; i < meshes.size(); i++)
         meshes[i].Draw(shader);
 }

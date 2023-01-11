@@ -162,6 +162,7 @@
     <ClCompile Include="src\Tests\TestBufferAndPost.cpp" />
     <ClCompile Include="src\Tests\TestClearColor.cpp" />
     <ClCompile Include="src\Tests\TestDepthAndStencil.cpp" />
+    <ClCompile Include="src\Tests\TestGeometryShader.cpp" />
     <ClCompile Include="src\Tests\TestModelLoading.cpp" />
     <ClCompile Include="src\Tests\TestSkyboxAndReflect.cpp" />
     <ClCompile Include="src\Tests\TestTexture2D.cpp" />
@@ -190,8 +191,11 @@
     <None Include="res\shaders\BufferAndPost.Shader" />
     <None Include="res\shaders\BufferQuad.Shader" />
     <None Include="res\shaders\DepthStencilObject.Shader" />
+    <None Include="res\shaders\GeometryBoomEffect.Shader" />
+    <None Include="res\shaders\GeometryNormalEffect.Shader" />
     <None Include="res\shaders\ModelLoading.Shader" />
     <None Include="res\shaders\SkyBoxAndReflect.Shader" />
+    <None Include="res\shaders\TestGeometry.Shader" />
     <None Include="res\shaders\TestTexture.Shader" />
     <None Include="src\vendor\glm\detail\func_common.inl" />
     <None Include="src\vendor\glm\detail\func_common_simd.inl" />
@@ -349,6 +353,7 @@
     <ClInclude Include="src\Tests\TestBufferAndPost.h" />
     <ClInclude Include="src\Tests\TestClearColor.h" />
     <ClInclude Include="src\Tests\TestDepthAndStencil.h" />
+    <ClInclude Include="src\Tests\TestGeometryShader.h" />
     <ClInclude Include="src\Tests\TestModelLoading.h" />
     <ClInclude Include="src\Tests\TestSkyBoxAndReflect.h" />
     <ClInclude Include="src\Tests\TestTexture2D.h" />

@@ -10,6 +10,7 @@ struct ShaderProgramSource
 {
 	std::string vertexShader;
 	std::string fragmentShader;
+	std::string geometryShader;
 };
 
 
@@ -44,7 +45,7 @@ private:
 
 	unsigned int CompileShader(unsigned int type, const std::string& source);
 
-	unsigned int CreateShader(const std::string VertextShader, const std::string FragmentShader);
+	unsigned int CreateShader(const std::string VertextShader, const std::string FragmentShader,const std::string GeometryShader);
 
 	ShaderProgramSource ParseShader(const std::string filepath);
 

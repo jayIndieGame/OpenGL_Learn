@@ -7,7 +7,7 @@
 
 enum class ShaderType
 {
-	NONE = -1, VERTEX = 0, FRAGMENT = 1
+	NONE = -1, VERTEX = 0, FRAGMENT = 1,GEOMETRY = 2
 
 };
 
@@ -20,8 +20,10 @@ Shader::Shader(const std::string& filepath):m_Filepath(filepath),m_RendererID(0)
 	std::cout << source.vertexShader << std::endl;
 	std::cout << "fragment shader" << std::endl;
 	std::cout << source.fragmentShader << std::endl;
+	std::cout << "geometry shader" << std::endl;
+	std::cout << source.geometryShader << std::endl;
 
-	m_RendererID = CreateShader(source.vertexShader, source.fragmentShader);
+	m_RendererID = CreateShader(source.vertexShader, source.fragmentShader,source.geometryShader);
 	
 }
 
@@ -105,7 +107,7 @@ ShaderProgramSource Shader::ParseShader(const std::string filepath)
 	std::ifstream stream(filepath);
 
 	std::string line;
-	std::stringstream ss[2];
+	std::stringstream ss[3];
 	ShaderType type = ShaderType::NONE;
 	while (getline(stream, line))
 	{
@@ -119,6 +121,10 @@ ShaderProgramSource Shader::ParseShader(const std::string filepath)
 			{
 				type = ShaderType::FRAGMENT;
 			}
+			else if(line.find("geometry")!= std::string::npos)
+			{
+				type = ShaderType::GEOMETRY;
+			}
 		}
 		else
 		{
@@ -126,8 +132,10 @@ ShaderProgramSource Shader::ParseShader(const std::string filepath)
 		}
 	}
 
-	return { ss[0].str(),ss[1].str() };
+	return { ss[0].str(),ss[1].str(),ss[2].str() };
 }
+
+
 
 //表示类型的参数类型是GLenum,也是typedef unsigned int GLenum;写无符号整形避免其他地方调用该函数时需要引入glew
 unsigned int Shader::CompileShader(unsigned int type, const std::string& source)
@@ -156,21 +164,28 @@ unsigned int Shader::CompileShader(unsigned int type, const std::string& source)
 	return id;
 }
 
-unsigned int Shader::CreateShader(const std::string VertextShader, const std::string FragmentShader)
+unsigned int Shader::CreateShader(const std::string VertextShader, const std::string FragmentShader,const std::string GeometryShader)
 {
 
 	unsigned int program = glCreateProgram();
 	unsigned int vs = CompileShader(GL_VERTEX_SHADER, VertextShader);
 	unsigned int fs = CompileShader(GL_FRAGMENT_SHADER, FragmentShader);
+	unsigned int gs = CompileShader(GL_GEOMETRY_SHADER, GeometryShader);
+	if (!GeometryShader.empty())
+		glAttachShader(program, gs);
+
 
 	glAttachShader(program, vs);
-
 	glAttachShader(program, fs);
+
+
 	glLinkProgram(program);
 	glValidateProgram(program);
 
 	glDeleteShader(vs);
 	glDeleteShader(fs);
+	if (!GeometryShader.empty())
+		glDeleteShader(gs);
 
 	return program;
 }
