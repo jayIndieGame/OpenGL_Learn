@@ -17,6 +17,7 @@
 #include "TestBufferAndPost.h"
 #include "TestSkyBoxAndReflect.h"
 #include "TestGeometryShader.h"
+#include "TestInstancing.h"
 
 static void checkGLFW(GLFWwindow* window);
 static void initGUI(GLFWwindow* window);
@@ -48,6 +49,7 @@ int main(void)
     testMenu->Register<test::TestBufferAndPost>("Test Buffer And PostEffect");
     testMenu->Register<test::TestSkyBoxAndReflect>("Test Skybox And Reflect");
     testMenu->Register<test::TestGeometryShader>("Test GeometryShader");
+    testMenu->Register<test::TestInstancing>("Test Instancing");
 
 #pragma endregion
 

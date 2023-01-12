@@ -17,7 +17,6 @@ public:
 	vector<Texture> texture_loaded;
 	vector<Mesh> meshes;
 	//string filepath;
-	
 	Model(string const &path);
 	~Model();
 

@@ -132,6 +132,9 @@
     <ClCompile Include="src\Tests\TestGeometryShader.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\Tests\TestInstancing.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\BasicLight.Shader" />
@@ -554,6 +557,7 @@
     <None Include="res\shaders\TestGeometry.Shader" />
     <None Include="res\shaders\GeometryBoomEffect.Shader" />
     <None Include="res\shaders\GeometryNormalEffect.Shader" />
+    <None Include="res\shaders\InstancingQuad.Shader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Renderer.h">
@@ -1520,6 +1524,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\Tests\TestGeometryShader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tests\TestInstancing.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
