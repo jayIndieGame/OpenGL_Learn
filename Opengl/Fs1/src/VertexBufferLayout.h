@@ -25,7 +25,7 @@ struct VertextBufferElement
 
 };
 
-class VertextBufferInstanceElement
+struct VertextBufferInstanceElement
 {
 	unsigned int type;
 	unsigned int count;
