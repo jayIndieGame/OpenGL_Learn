@@ -41,14 +41,26 @@ void VertexArray::AddBuffer(const VertexBuffer& vb, const VertexBufferLayout& La
 	}
 }
 
-void VertexArray::AddInstance(const VertexBuffer& vb, unsigned int count, unsigned index, unsigned divisor)//懒得用template写了反正也是只用float
+void VertexArray::AddInstance(const VertexBuffer& vb, const VertexBufferLayout& Layout)//懒得用template写了反正也是只用float
 {
 
 	this->Bind();
 	GLCALL(glEnableVertexAttribArray(m_RecordNumber));
 	vb.Bind();
-	GLCALL(glVertexAttribPointer(m_RecordNumber, count, GL_FLOAT, GL_FALSE, count * VertextBufferElement::GetSizeOfType(GL_FLOAT), (void*)0));
-	GLCALL(glVertexAttribDivisor(index, divisor));
-	m_RecordNumber++;
+	const auto& instanceElements = Layout.GetInstanceElemments();
+	unsigned int offset = 0;
+
+	for (unsigned int i = 0; i < instanceElements.size(); i++)
+	{
+		const auto& instance = instanceElements[i];
+
+		GLCALL(glEnableVertexAttribArray(m_RecordNumber));
+		GLCALL(glVertexAttribPointer(m_RecordNumber, instance.count, instance.type, instance.normalized, Layout.GetInstanceStride(instance), (const void*)offset));
+		offset += instance.count * VertextBufferElement::GetSizeOfType(instance.type);
+
+		GLCALL(glVertexAttribDivisor(instance.index, instance.divisor));
+		m_RecordNumber++;
+	}
+
 }
 

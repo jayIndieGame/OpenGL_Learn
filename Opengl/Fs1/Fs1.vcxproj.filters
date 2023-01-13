@@ -557,7 +557,10 @@
     <None Include="res\shaders\TestGeometry.Shader" />
     <None Include="res\shaders\GeometryBoomEffect.Shader" />
     <None Include="res\shaders\GeometryNormalEffect.Shader" />
-    <None Include="res\shaders\InstancingQuad.Shader" />
+    <None Include="res\shaders\InstancingPlanet.Shader" />
+    <None Include="res\Model\planet\planet.mtl" />
+    <None Include="res\Model\rock\rock.mtl" />
+    <None Include="res\shaders\InstancingRock.Shader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Renderer.h">
@@ -1585,8 +1588,15 @@
     <Image Include="res\Texture\skybox\top.jpg">
       <Filter>资源文件</Filter>
     </Image>
+    <Image Include="res\Model\planet\mars.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\Model\rock\rock.png">
+      <Filter>资源文件</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Text Include="res\Model\backpack\source_attribution.txt" />
+    <Text Include="res\Model\planet\source.txt" />
   </ItemGroup>
 </Project>

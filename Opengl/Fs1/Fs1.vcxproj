@@ -187,6 +187,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="res\Model\backpack\backpack.mtl" />
+    <None Include="res\Model\planet\planet.mtl" />
+    <None Include="res\Model\rock\rock.mtl" />
     <None Include="res\shaders\AlphaAndClip.Shader" />
     <None Include="res\shaders\BasicLight.Shader" />
     <None Include="res\shaders\BufferAndPost.Shader" />
@@ -194,7 +196,8 @@
     <None Include="res\shaders\DepthStencilObject.Shader" />
     <None Include="res\shaders\GeometryBoomEffect.Shader" />
     <None Include="res\shaders\GeometryNormalEffect.Shader" />
-    <None Include="res\shaders\InstancingQuad.Shader" />
+    <None Include="res\shaders\InstancingPlanet.Shader" />
+    <None Include="res\shaders\InstancingRock.Shader" />
     <None Include="res\shaders\ModelLoading.Shader" />
     <None Include="res\shaders\SkyBoxAndReflect.Shader" />
     <None Include="res\shaders\TestGeometry.Shader" />
@@ -667,6 +670,8 @@
     <Image Include="res\Model\backpack\normal.png" />
     <Image Include="res\Model\backpack\roughness.jpg" />
     <Image Include="res\Model\backpack\specular.jpg" />
+    <Image Include="res\Model\planet\mars.png" />
+    <Image Include="res\Model\rock\rock.png" />
     <Image Include="res\Texture\awesomeface.png" />
     <Image Include="res\Texture\container2.png" />
     <Image Include="res\Texture\container2_specular.png" />
@@ -683,6 +688,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="res\Model\backpack\source_attribution.txt" />
+    <Text Include="res\Model\planet\source.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

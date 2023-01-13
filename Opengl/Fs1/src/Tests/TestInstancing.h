@@ -1,5 +1,7 @@
 ﻿#pragma once
+#include "Camera.h"
 #include "IndexBuffer.h"
+#include "Model.h"
 #include "Shader.h"
 #include "Test.h"
 #include "VertexArray.h"
@@ -18,13 +20,18 @@ namespace test
 		void OnImGUIRender() override;
 		void OnExit() override;
 	private:
-		std::unique_ptr<VertexArray> vao;
 		std::unique_ptr<VertexBuffer> instanceVb;
-		std::unique_ptr<Shader> shader;
-		std::unique_ptr<Quad2D> m_quad;
-		std::unique_ptr<Texture> m_texture;
+		std::unique_ptr<Shader> planet_shader;
+		std::unique_ptr<Shader> rock_shader;
+		std::unique_ptr<Model> planet;
+		std::unique_ptr<Model> rock;
+		std::unique_ptr<Camera> m_Camera;
 		
 		glm::vec2 translations[100];
+		glm::mat4* modelMatrices;
+
+		unsigned int m_amount = 10000;
+		float m_radius, m_offset;
 	};
 
 }

@@ -15,13 +15,13 @@ vertices(vertices),indices(indices),textures(textures)
 void Mesh::SetRenderState() const
 {
 	VertexBufferLayout layout;
-	layout.Push<float>(3);
-	layout.Push<float>(3);
-	layout.Push<float>(2);
-	layout.Push<float>(3);
-	layout.Push<float>(3);
-	layout.Push<int>(4);
-	layout.Push<float>(4);
+	layout.Push<float>(3);//0
+	layout.Push<float>(3);//1
+	layout.Push<float>(2);//2
+	layout.Push<float>(3);//3
+	layout.Push<float>(3);//4
+	layout.Push<int>(4);//5
+	layout.Push<float>(4);//6
 
 	m_vao->AddBuffer(*m_vertexBuffer, layout);
 }
