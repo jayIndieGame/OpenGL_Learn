@@ -66,3 +66,13 @@ VertexArray Mesh::GetVertexArray() const
 {
 	return *m_vao;
 }
+
+VertexArray* Mesh::GetVertexArrayPointer() const
+{
+	return m_vao.get();
+}
+
+IndexBuffer* Mesh::GetIndexBufferPointer() const
+{
+	return m_IndexBuffer.get();
+}

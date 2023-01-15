@@ -65,7 +65,7 @@ private:
 	unsigned int m_Stride;
 
 	std::vector<VertextBufferInstanceElement> m_InstanceElements;
-	std::unordered_map<VertextBufferInstanceElement,unsigned int> m_InstanceStrideDic;
+	std::vector<unsigned int> m_InstanceStride;
 public:
 	VertexBufferLayout() :m_Stride(0) {};
 	~VertexBufferLayout();
@@ -95,7 +95,7 @@ public:
 	{
 		VertextBufferInstanceElement v = { GL_FLOAT,count,GL_FALSE,index,divisor };
 		m_InstanceElements.push_back(v);
-		m_InstanceStrideDic[v] = count * VertextBufferElement::GetSizeOfType(GL_FLOAT);
+		m_InstanceStride.push_back(count * VertextBufferElement::GetSizeOfType(GL_FLOAT));
 	}
 
 	template<>
@@ -128,11 +128,11 @@ public:
 	{
 		VertextBufferInstanceElement v = { GL_FLOAT,count *4,GL_FALSE,index,divisor };
 		m_InstanceElements.push_back(v);
-		m_InstanceStrideDic[v] = count * sizeof(glm::mat4);
+		m_InstanceStride.push_back(count * sizeof(glm::mat4));
 	}
 
 	inline const std::vector<VertextBufferElement> GetElemments() const { return m_Elements; };
 	inline const std::vector<VertextBufferInstanceElement> GetInstanceElemments() const { return m_InstanceElements; };
 	inline unsigned int GetStride() const { return m_Stride; }
-	inline unsigned int GetInstanceStride(VertextBufferInstanceElement element) const { return m_InstanceStrideDic.find(element)->second; }
+	inline const std::vector<unsigned int> GetInstanceStride() const { return m_InstanceStride; }
 };

@@ -35,6 +35,8 @@ class Mesh
 		void Draw(Shader& shader)const;
 		IndexBuffer GetIndexBuffer() const;
 		VertexArray GetVertexArray() const;
+		VertexArray* GetVertexArrayPointer() const;
+		IndexBuffer* GetIndexBufferPointer() const;
 
 
 private:

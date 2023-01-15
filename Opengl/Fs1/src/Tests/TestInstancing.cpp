@@ -4,14 +4,15 @@
 #include "VertexBufferLayout.h"
 #include "imGui/imgui.h"
 
-test::TestInstancing::TestInstancing()
+test::TestInstancing::TestInstancing():m_radius(50.0f),m_offset(6.0f)
 {
+    planet = std::make_unique<Model>("res/Model/planet/planet.obj");
     rock = std::make_unique<Model>("res/Model/rock/rock.obj");
-	planet = std::make_unique<Model>("res/Model/planet/planet.obj");
-    planet_shader = std::make_unique<Shader>("res/shaders/InstancingPlanet.shader");
-    rock_shader = std::make_unique<Shader>("res/shaders/InstancingPlanet.shader");
 
-    m_Camera = std::make_unique<Camera>(glm::vec3(0.0f, 0.0f, 0.0f));
+    planet_shader = std::make_unique<Shader>("res/shaders/InstancingPlanet.shader");
+    rock_shader = std::make_unique<Shader>("res/shaders/InstancingRock.shader");
+    modelMatrices = new glm::mat4[m_amount];
+    m_Camera = std::make_unique<Camera>(glm::vec3(-60.0f, 0.0f, 60.0f));
 
     for (unsigned int i = 0; i < m_amount; i++)
     {
@@ -47,12 +48,7 @@ test::TestInstancing::TestInstancing()
 
     for (unsigned int i = 0; i < rock->meshes.size(); i++)
     {
-        VertexArray tempVao = rock->meshes[i].GetVertexArray();
-        tempVao.Bind();
-
-        tempVao.AddInstance(*instanceVb, layout);
-
-        tempVao.UnBind();
+        rock->meshes[i].GetVertexArrayPointer()->AddInstance(*instanceVb, layout,3);
     }
 
 
@@ -75,18 +71,22 @@ void test::TestInstancing::OnRender()
 	glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 	Renderer renderer;
 	renderer.Clear();
-    planet->Draw(*planet_shader);
+    planet_shader->Bind();
     planet_shader->SetUniform4fMat("projection", m_Camera->GetProjMatrix());
     planet_shader->SetUniform4fMat("view", m_Camera->GetViewMatrix());
     glm::mat4 model = glm::mat4(1.0f);
-    model = glm::translate(model, glm::vec3(0.0f, -150.0f, 0.0f));
-    model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
+    model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
+    model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
     planet_shader->SetUniform4fMat("model", model);
+    planet->Draw(*planet_shader);
 
+    rock_shader->Bind();
+    rock_shader->SetUniform4fMat("projection", m_Camera->GetProjMatrix());
+    rock_shader->SetUniform4fMat("view", m_Camera->GetViewMatrix());
+    rock->Draw(*rock_shader);
     for (unsigned int i = 0;i<rock->meshes.size();i++)
     {
-        renderer.DrawInstance(rock->meshes[i].GetVertexArray(), rock->meshes[i].GetIndexBuffer(), *rock_shader, m_amount);
-        rock->meshes[i].GetVertexArray().UnBind();
+        renderer.DrawInstance(*rock->meshes[i].GetVertexArrayPointer(), *rock->meshes[i].GetIndexBufferPointer(), *rock_shader, m_amount);
     }
 }
 
@@ -94,13 +94,14 @@ void test::TestInstancing::OnImGUIRender()
 {
 	//Test::OnImGUIRender();
 	ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-}
-
-void test::TestInstancing::OnExit()
-{
     ImGui::SliderFloat("Camera Speed", &m_Camera->MovementSpeed, 8, 50.0f);
     ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
     ImGui::Text("camera Location X %f", m_Camera->Position.x);
     ImGui::Text("camera Location Y %f", m_Camera->Position.y);
     ImGui::Text("camera Location Z %f", m_Camera->Position.z);
+}
+
+void test::TestInstancing::OnExit()
+{
+
 }

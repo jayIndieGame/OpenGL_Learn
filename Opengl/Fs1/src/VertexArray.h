@@ -17,5 +17,5 @@ public:
 
 	void AddBuffer(const VertexBuffer& vb,const VertexBufferLayout& Layout);
 
-	void AddInstance(const VertexBuffer& vb, const VertexBufferLayout& Layout);
+	void AddInstance(const VertexBuffer& vb, const VertexBufferLayout& Layout,int specificShaderIndex = -1);
 };
