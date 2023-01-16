@@ -12,7 +12,7 @@ test::TestInstancing::TestInstancing():m_radius(50.0f),m_offset(6.0f)
     planet_shader = std::make_unique<Shader>("res/shaders/InstancingPlanet.shader");
     rock_shader = std::make_unique<Shader>("res/shaders/InstancingRock.shader");
     modelMatrices = new glm::mat4[m_amount];
-    m_Camera = std::make_unique<Camera>(glm::vec3(-60.0f, 0.0f, 60.0f));
+    m_Camera = std::make_unique<Camera>(glm::vec3(-20.0f, 15.0f, 100.0f));
 
     for (unsigned int i = 0; i < m_amount; i++)
     {
