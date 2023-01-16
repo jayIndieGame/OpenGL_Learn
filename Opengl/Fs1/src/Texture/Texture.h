@@ -13,7 +13,7 @@ private:
 
 public:
 	std::string name;
-	Texture(const std::string& path, const std::string& name = "u_Texture",bool enableMiniMap = false);
+	Texture(const std::string& path, const std::string& name = "u_Texture",bool enableMiniMap = false,bool sRGB = false);
 	~Texture();
 
 	void Bind(unsigned int slot = 0)const;
