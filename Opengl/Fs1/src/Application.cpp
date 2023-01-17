@@ -18,6 +18,7 @@
 #include "TestSkyBoxAndReflect.h"
 #include "TestGeometryShader.h"
 #include "TestInstancing.h"
+#include "TestShadowMap.h"
 
 static void checkGLFW(GLFWwindow* window);
 static void initGUI(GLFWwindow* window);
@@ -50,6 +51,7 @@ int main(void)
     testMenu->Register<test::TestSkyBoxAndReflect>("Test Skybox And Reflect");
     testMenu->Register<test::TestGeometryShader>("Test GeometryShader");
     testMenu->Register<test::TestInstancing>("Test Instancing");
+    testMenu->Register<test::TestShadowMap>("Test ShadowMap");
 
 #pragma endregion
 

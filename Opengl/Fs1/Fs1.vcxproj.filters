@@ -135,6 +135,9 @@
     <ClCompile Include="src\Tests\TestInstancing.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\Tests\TestShadowMap.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\BasicLight.Shader" />
@@ -561,6 +564,8 @@
     <None Include="res\Model\planet\planet.mtl" />
     <None Include="res\Model\rock\rock.mtl" />
     <None Include="res\shaders\InstancingRock.Shader" />
+    <None Include="res\shaders\ShadowmapDebug.Shader" />
+    <None Include="res\shaders\ShadowmappingDepth.Shader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Renderer.h">
@@ -1532,6 +1537,9 @@
     <ClInclude Include="src\Tests\TestInstancing.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="src\Tests\TestShadowMap.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\Texture\awesomeface.png">
@@ -1592,6 +1600,9 @@
       <Filter>资源文件</Filter>
     </Image>
     <Image Include="res\Model\rock\rock.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\Texture\wood.png">
       <Filter>资源文件</Filter>
     </Image>
   </ItemGroup>

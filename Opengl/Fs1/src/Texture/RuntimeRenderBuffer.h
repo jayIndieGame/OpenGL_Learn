@@ -14,6 +14,7 @@ private:
 
 public:
 	void BindRenderbuffer(GLenum attachment)const;
+	void Bind() const;
 	void UnBind() const;
 
 	inline int GetWidth() const { return m_width; }

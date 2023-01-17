@@ -21,6 +21,13 @@ void RuntimeRenderbuffer::BindRenderbuffer(GLenum attachment) const
 	glFramebufferRenderbuffer(GL_FRAMEBUFFER, attachment, GL_RENDERBUFFER, m_RendererID);
 }
 
+void RuntimeRenderbuffer::Bind() const
+{
+	GLCALL(glBindRenderbuffer(GL_RENDERBUFFER, m_RendererID));
+	GLCALL(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT));
+	GLCALL(glActiveTexture(GL_TEXTURE0));
+}
+
 void RuntimeRenderbuffer::UnBind() const
 {
 	GLCALL(glBindRenderbuffer(GL_RENDERBUFFER, 0));
