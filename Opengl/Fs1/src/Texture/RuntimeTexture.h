@@ -14,6 +14,7 @@ private:
 
 public:
 	void BindFramebuffer(GLenum attachment, unsigned int slot /*= 0*/)const;
+	void Bind(GLenum attachment, unsigned int slot /*= 0*/) const;
 	void UnBind() const;
 	void TextureRelease()const;
 

@@ -5,7 +5,7 @@
 #include "imGui/imgui.h"
 
 test::TestShadowMap::TestShadowMap():
-	cubeLocation(0, 0, -200), floorLocation(0, 0, 0), lightPos(-20.0f, 0.0f, -40.0f)
+	cubeLocation(0, 0, -200), floorLocation(0, 0, 0), lightPos(51.0f,- 24.0f, -150.0f)
 {
 	m_rt = std::make_unique<RuntimeTexture>(1024, 1024, GL_DEPTH_COMPONENT, GL_DEPTH_COMPONENT);
 	m_frameBuffer = std::make_unique<FrameBuffer>();
@@ -23,24 +23,21 @@ test::TestShadowMap::TestShadowMap():
 	VertexBufferLayout plane_layout;
 	VertexBufferLayout quad_layout;
 	//初始化cube
-	m_CubeVAO->Bind();
 	m_Cube->SetLocation(cubeLocation);
 	m_Cube->SetRenderState(*m_simpleDepthShader, *m_Default, cube_layout, *m_CubeVAO, 0);
 
 	//初始化plane
-	m_PlaneVAO->Bind();
 	m_Plane->SetLocation(floorLocation);
-	m_Plane->SetRenderState(*m_simpleDepthShader, *m_Default, plane_layout, *m_PlaneVAO, 1);
+	m_Plane->SetRenderState(*m_simpleDepthShader, *m_Default, plane_layout, *m_PlaneVAO, 0);
 
 
 	//
 	m_Camera->Position = glm::vec3(51.0f, -24.0f, -150.f);
-	m_QuadVAO->Bind();
+	m_frameBuffer->Bind();
 	m_Quad2D->SetRenderState(*m_debugDepth, *m_rt, quad_layout, *m_QuadVAO, GL_DEPTH_ATTACHMENT, 1);
-	glDrawBuffer(GL_NONE);
-	glReadBuffer(GL_NONE);
-	glBindFramebuffer(GL_FRAMEBUFFER, 0);
-
+	GLCALL(glDrawBuffer(GL_NONE));
+	GLCALL(glReadBuffer(GL_NONE));
+	m_frameBuffer->UnBind();
 
 
 	glEnable(GL_DEPTH_TEST);
@@ -66,20 +63,19 @@ void test::TestShadowMap::OnRender()
 
 	glm::mat4 lightProjection, lightView;
 	glm::mat4 lightSpaceMatrix;
-	float near_plane = 1.0f, far_plane = 75.0f;
+	float near_plane = 1.0f, far_plane = 500.0f;
 	lightProjection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, near_plane, far_plane);
 	lightView = glm::lookAt(lightPos, glm::vec3(0.0f), glm::vec3(0.0, 1.0, 0.0));
 	lightSpaceMatrix = lightProjection * lightView;
 
+	glViewport(0, 0, 1024, 1024);
+	m_frameBuffer->Bind();
+
 
 	m_simpleDepthShader->Bind();
 	m_simpleDepthShader->SetUniform4fMat("lightSpaceMatrix", lightSpaceMatrix);
-	glViewport(0, 0, 1024, 1024);
-	m_frameBuffer->Bind();
-	render.Clear();
-	m_Default->Bind(0);
-
-
+	glClear(GL_DEPTH_BUFFER_BIT);
+	m_rt->Bind(GL_DEPTH_ATTACHMENT, 1);
 	m_Plane->SetScale(glm::vec3(5.0f));
 	m_simpleDepthShader->SetUniform4fMat("model", m_Plane->GetModelMatrix());
 	render.Draw(*m_PlaneVAO, *m_Plane->GetIndexBufferPointer(), *m_simpleDepthShader);
@@ -88,12 +84,15 @@ void test::TestShadowMap::OnRender()
 	m_simpleDepthShader->SetUniform4fMat("model", m_Cube->GetModelMatrix());
 	render.Draw(*m_CubeVAO, *m_Cube->GetIndexBufferPointer(), *m_simpleDepthShader);
 
-	GLCALL(glBindFramebuffer(GL_FRAMEBUFFER, 0));
-
+	m_frameBuffer->UnBind();
+	glViewport(0, 0, 1280, 960);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	m_debugDepth->Bind();
 	m_debugDepth->SetUniform1f("near_plane", near_plane);
 	m_debugDepth->SetUniform1f("far_plane", far_plane);
+	m_debugDepth->SetUniform1i("u_Texture", 1);
+
 	render.Draw(*m_QuadVAO, *m_Quad2D->GetIndexBufferPointer(), *m_debugDepth);
 
 
@@ -112,5 +111,6 @@ void test::TestShadowMap::OnImGUIRender()
 
 void test::TestShadowMap::OnExit()
 {
+	glViewport(0, 0, 1280, 960);
 	Test::OnExit();
 }

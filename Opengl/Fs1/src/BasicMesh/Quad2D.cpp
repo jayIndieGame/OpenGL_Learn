@@ -61,7 +61,7 @@ void Quad2D::SetRenderState(Shader& shader, RuntimeTexture& rt, VertexBufferLayo
 
 	shader.Bind();
 	rt.BindFramebuffer(attachment,slot);
-	shader.SetUniform1i("u_Texture", 2);
+	shader.SetUniform1i("u_Texture", slot);
 	layout.Push<float>(2);
 	layout.Push<float>(2);
 	vao.AddBuffer(*m_vb, layout);

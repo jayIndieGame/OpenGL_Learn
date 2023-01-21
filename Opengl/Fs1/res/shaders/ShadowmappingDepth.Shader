@@ -13,7 +13,11 @@ void main()
 
 #shader fragment
 #version 330 core//330是glsl的版本core指的是不用废弃掉的方法
+
+//out vec4 FragColor;
+
 void main()
 {
-    // gl_FragDepth = gl_FragCoord.z;
+    //gl_FragDepth = gl_FragCoord.z;
+    //FragColor = vec4(vec3(gl_FragDepth), 1.0);
 }
