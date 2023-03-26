@@ -71,11 +71,10 @@ void test::TestShadowMap::OnRender()
 	glViewport(0, 0, 1024, 1024);
 	m_frameBuffer->Bind();
 
-
+	m_rt->Bind(GL_DEPTH_ATTACHMENT, 1);
 	m_simpleDepthShader->Bind();
 	m_simpleDepthShader->SetUniform4fMat("lightSpaceMatrix", lightSpaceMatrix);
 	glClear(GL_DEPTH_BUFFER_BIT);
-	m_rt->Bind(GL_DEPTH_ATTACHMENT, 1);
 	m_Plane->SetScale(glm::vec3(5.0f));
 	m_simpleDepthShader->SetUniform4fMat("model", m_Plane->GetModelMatrix());
 	render.Draw(*m_PlaneVAO, *m_Plane->GetIndexBufferPointer(), *m_simpleDepthShader);
